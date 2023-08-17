@@ -135,13 +135,13 @@ class Bert(nn.Module):
 
     '''def forward(self, x, segs, mask):
         if(self.finetune):
-            top_vec, _ = self.model(x, token_type_ids=segs, attention_mask=mask)
+            top_vec = self.model(x, token_type_ids=segs, attention_mask=mask)[0]
             #print(last_hiddens, last_pooling_hiddens, hiddens)
             #top_vec = hiddens[-1]
         else:
             self.eval()
             with torch.no_grad():
-                top_vec, _ = self.model(x, token_type_ids=segs, attention_mask=mask)
+                top_vec = self.model(x, token_type_ids=segs, attention_mask=mask)[0]
         return top_vec'''
 
 
